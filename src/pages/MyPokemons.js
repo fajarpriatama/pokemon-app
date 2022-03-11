@@ -1,23 +1,21 @@
 import { useNavigate } from "react-router-dom";
 import usePokemon from "../hooks/usePokemon";
+// import RemoveIcon from "@mui/icons-material/Remove";
+// import { Card, IconButton, Typography } from "@mui/material";
 
 function Pokemons() {
-const navigate = useNavigate();
-const { pokemonCarts } = usePokemon();
+    const navigate = useNavigate();
+    const { pokemonCarts, deletePokemonFromCart } = usePokemon();
 
     return (
         <>
             <div className="App-menu">
                 <h1>My Pokemon</h1>
             </div>
-            <div className="Main">
-                <div className="container">
-                    <div className="gallery-grid">
-                        <div className="gallery-frame">
                             {Array.from(pokemonCarts || []).map((item, index) => {
                                 return (
                                     <span
-                                        onClick={() => navigate(`/pokemons/${item.id}?name=${item.name}`)}
+                                        
                                         style={{
                                             margin: 14,
                                             marginBottom: 30,
@@ -26,23 +24,25 @@ const { pokemonCarts } = usePokemon();
                                             borderRadius: 10,
                                             cursor: "pointer",
                                         }}
-                                        >
+                                    >
                                         <img
                                             src={item?.img}
                                             alt="span"
                                             style={{ height: 200 }}
+                                            onClick={() => navigate(`/pokemons/${item.id}?name=${item.name}`)}
                                         />
                                         <p key={item.id} style={{ color: "black" }}>
                                             {item?.name}
                                         </p>
-                                        <button>add to cart</button>
+                                        <button onClick={(e) => {
+                                            e.preventDefault()
+                                            deletePokemonFromCart(index)
+                                        }}>
+                                            delete from cart
+                                        </button>
                                     </span>
                                 );
                             })}
-                        </div>
-                    </div>
-                </div>
-            </div>
         </>
     );
 }

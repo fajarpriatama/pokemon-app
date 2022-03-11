@@ -23,7 +23,9 @@ function Pokemons() {
                     return {
                         id: payloadDetail?.data?.name || "",
                         name: payloadDetail?.data?.name || "",
-                        img: payloadDetail?.data?.sprites.other.dream_world.front_default || "",
+                        img: 
+                            payloadDetail?.data?.sprites.other.dream_world.front_default ||
+                             "",
                     };
                 }
             );
