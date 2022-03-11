@@ -21,7 +21,7 @@ const { pokemonCarts } = usePokemon();
                                         style={{
                                             margin: 14,
                                             marginBottom: 30,
-                                            background: "gray",
+                                            background: "#fafafa",
                                             padding: 10,
                                             borderRadius: 10,
                                             cursor: "pointer",
@@ -32,7 +32,7 @@ const { pokemonCarts } = usePokemon();
                                             alt="span"
                                             style={{ height: 200 }}
                                         />
-                                        <p key={item.id} style={{ color: "white" }}>
+                                        <p key={item.id} style={{ color: "black" }}>
                                             {item?.name}
                                         </p>
                                         <button>add to cart</button>

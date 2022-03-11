@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import usePokemon from "../hooks/usePokemon";
 import { getPokemonByName, getPokemons } from "../services/axios";
+// import { Card, IconButton, Typography } from "@mui/material";
+// import AddIcon from '@mui/icons-material/Add';
 
 function Pokemons() {
     const { addPokemonToCart } = usePokemon();
@@ -57,7 +59,7 @@ function Pokemons() {
                                             alt="span"
                                             style={{ height: 200 }}
                                             onClick={() =>
-                                            navigate(`/pokemons/${item.id}?name=${item.name}`)
+                                                navigate(`/pokemons/${item.id}?name=${item.name}`)
                                             }
                                         />
                                         <p key={item.id} style={{ color: "black" }}>

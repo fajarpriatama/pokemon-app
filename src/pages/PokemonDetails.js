@@ -34,13 +34,13 @@ function Pokemons() {
                 </div>
                 <div className="Main">
                     <div className="container">
-                    <button onClick={() => navigate(-1)}>go back</button>
-                    <h1>Pokemon: {pokemonData?.name}</h1>
-                    <img 
-                        src={pokemonData?.img} 
-                        alt=""
-                        style={{ height: 200 }}
-                    />
+                        <button onClick={() => navigate(-1)}>go back</button>
+                        <h1>Pokemon: {pokemonData?.name}</h1>
+                        <img 
+                            src={pokemonData?.img} 
+                            alt="span"
+                            style={{ height: 200 }}
+                        />
                     </div>
             </div>
         </>
