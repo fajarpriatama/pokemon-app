@@ -3,50 +3,27 @@
   justify-content: center;
   flex-direction: column;
   padding: 1em;
-  background-color: white;
+  background-color: #87ceeb;
 }
 
-.Main {
+.nav-container {
   display: flex;
-  justify-content: center;
+  width: auto;
   padding: 1em;
-}
-
-.container {
-  display: flex;
-  width: 70%;
   justify-content: space-between;
   align-items: center;
 }
 
-.gallery-grid {
-  display: flex;
-  justify-content: flex-start;
-  column-gap: 5%;
-  row-gap: 1em;
-  flex-wrap: wrap;
+.nav-menu {
+  margin: 0 15px;
 }
 
-.gallery-frame {
-  width: 30%;
-  position: relative;
-  height: 0;
-  padding-bottom: 30%;
+.p-pointer {
+  cursor: pointer;
 }
 
-.gallery-frame > img {
-  width: 100%;
-}
-
-.apptitle {
-  font-weight: bold;
-  font-size: large;
-}
-
-.content-nav {
-  display: flex;
-  width: 50%;
-  justify-content: space-between;
+.p-done {
+  text-decoration: line-through;
 }
 
 .App-logo {

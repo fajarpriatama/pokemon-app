@@ -1,3 +1,4 @@
+import { CardContent, makeStyles, Grid, Card } from "@material-ui/core";    
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import usePokemon from "../hooks/usePokemon";
@@ -36,51 +37,73 @@ function Pokemons() {
         }
     }
 
+    const useStyles = makeStyles({
+        pokedexContainer: {
+            paddingTop: "20px",
+            paddingLeft: "50px",
+            paddingRight: "50px",
+        },
+    });
+
+    const classes = useStyles();
+
+    // const getPokemonCard = () => {
+    //     return (
+    //         <Grid item xs={4}>
+    //             <Card>
+    //                 <CardContent>Tes</CardContent>
+    //             </Card>
+    //         </Grid>
+    //     );
+    // };
+
     return (
         <>
-            <div className="App">
-                <h1>Pokemon List</h1>
-            </div>
-            <div className="Main">
-                <div className="container">
-                    <div className="gallery-grid">
-                            {Array.from(pokemonData || []).map((item, index) => {
-                                return (
-                                    <span
-                                        style={{
-                                            margin: 14,
-                                            marginBottom: 30,
-                                            background: "#fafafa",
-                                            padding: 10,
-                                            borderRadius: 10,
-                                            cursor: "pointer",
-                                        }}
-                                    >
-                                        <img
-                                            src={item?.img}
-                                            alt="span"
-                                            style={{ height: 200 }}
-                                            onClick={() =>
-                                                navigate(`/pokemons/${item.id}?name=${item.name}`)
-                                            }
-                                        />
-                                        <p key={item.id} style={{ color: "black" }}>
-                                            {item?.name}
-                                        </p>
-                                        <button
-                                            onClick={(e) => {
-                                            e.preventDefault();
-                                            addPokemonToCart(item);
-                                            }}
-                                        >
-                                            add to cart
-                                        </button>
-                                    </span>
-                                );
-                            })}
-                        </div>  
-                    </div>
-                </div>
+            {/* <Grid container spacing={2} className={classes.pokedexContainer}>
+                {getPokemonCard()}
+                {getPokemonCard()}
+                {getPokemonCard()}
+                {getPokemonCard()}
+            </Grid> */}
+            <h1>Pokemon List</h1>
+            <Grid container spacing={2} className={classes.pokedexContainer}>
+                {Array.from(pokemonData || []).map((item, index) => {
+                    return (
+                        <Card>
+                            <CardContent
+                                style={{
+                                    margin: 14,
+                                    marginBottom: 30,
+                                    background: "#fafafa",
+                                    padding: 10,
+                                    borderRadius: 10,
+                                    cursor: "pointer",
+                                }}
+                            >
+                                <img
+                                    src={item?.img}
+                                    alt="span"
+                                    style={{ height: 200 }}
+                                    onClick={() =>
+                                        navigate(`/pokemons/${item.id}?name=${item.name}`)
+                                    }
+                                />
+                                <p key={item.id} style={{ color: "black" }}>
+                                    {item?.name}
+                                </p>
+                                <button
+                                    onClick={(e) => {
+                                    e.preventDefault();
+                                    addPokemonToCart(item);
+                                    }}
+                                >
+                                    add to cart
+                                </button>
+                            </CardContent>
+                        </Card>
+                    );
+                })}
+            </Grid>
         </>
     );
 }

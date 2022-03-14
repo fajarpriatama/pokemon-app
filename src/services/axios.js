@@ -12,3 +12,16 @@ export const getPokemonByName = (name) => axios ({
     baseURL,
     url: `/pokemon/${name}`, 
 });
+
+export const getUsers = () => axios({
+    method: "GET",
+    baseURL: "https://reqres.in",
+    url: "/api/users?page=2",
+});
+
+export const serviceLogin = (data) => axios({
+    method: "POST",
+    baseURL: "https://reqres.in",
+    url: "/api/login",
+    data: data
+});

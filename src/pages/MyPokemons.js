@@ -1,21 +1,35 @@
+import React from "react";
 import { useNavigate } from "react-router-dom";
 import usePokemon from "../hooks/usePokemon";
+import { CardContent, makeStyles, Grid, Card } from "@material-ui/core";
+import useAuth from "../hooks/useAuth";
 // import RemoveIcon from "@mui/icons-material/Remove";
 // import { Card, IconButton, Typography } from "@mui/material";
 
 function Pokemons() {
     const navigate = useNavigate();
     const { pokemonCarts, deletePokemonFromCart } = usePokemon();
+    useAuth("protected");
+
+    const useStyles = makeStyles({
+        pokedexContainer: {
+            paddingTop: "20px",
+            paddingLeft: "50px",
+            paddingRight: "50px",
+        },
+    });
+
+    const classes = useStyles();
 
     return (
         <>
-            <div className="App-menu">
-                <h1>My Pokemon</h1>
-            </div>
+            <h1>My Pokemon</h1>
+            <Grid container spacing={2} className={classes.pokedexContainer}>
+                <Card>
+                    <CardContent>
                             {Array.from(pokemonCarts || []).map((item, index) => {
                                 return (
-                                    <span
-                                        
+                                    <Card
                                         style={{
                                             margin: 14,
                                             marginBottom: 30,
@@ -35,14 +49,17 @@ function Pokemons() {
                                             {item?.name}
                                         </p>
                                         <button onClick={(e) => {
-                                            e.preventDefault()
+                                            e.preventDefault();
                                             deletePokemonFromCart(index)
                                         }}>
                                             delete from cart
                                         </button>
-                                    </span>
+                                    </Card>
                                 );
                             })}
+                    </CardContent>
+                </Card>
+            </Grid>
         </>
     );
 }
